@@ -1,0 +1,22 @@
+<app-student *ngFor="let student of students"></app-student>
+<!-- <app-student></app-student>
+<app-student></app-student> -->
+<hr>
+
+<p class="text-muted">{{ studentCreationStatus }}</p>
+<!--(input)="onUpdateStudentName($event)"-->
+<label class="text-primary">Student Name</label>
+<input
+type="text"
+class="form-control"
+[(ngModel)]="studentName">
+<br>
+<!-- <p class="text-muted">{{ studentName }}</p>
+<p class="text-muted" [inner-text]="{{ studentName }}"></p> -->
+<p *ngIf="studentAdded; else noStudent">Student added, student's name is {{ studentName }}</p>
+<ng-template #noStudent>
+  <p>No students added!</p>
+</ng-template>
+<button class="btn btn-primary"
+[disabled]="!allowNewStudent"
+(click)="onCreateStudent()">Add Student</button>
